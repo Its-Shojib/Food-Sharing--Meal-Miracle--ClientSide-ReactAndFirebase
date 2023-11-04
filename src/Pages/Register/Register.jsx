@@ -11,6 +11,7 @@ import { updateProfile } from 'firebase/auth'
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import auth from "../../Firebase/Firebase.config";
 import animation from './../../../src/assets/SignUpAnimation.json'
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -122,6 +123,9 @@ const Register = () => {
     }
     return (
         <div className="flex flex-col md:flex-row gap-5 px-2 justify-center items-center mt-5">
+            <Helmet>
+                <title>Meal Miracle | Register</title>
+            </Helmet>
             <div className="bg-gray-400 w-full md:w-5/12 text-center p-10 rounded-lg">
                 <h2 className="text-3xl font-bold mb-2">Register Now!</h2>
                 <form onSubmit={handleCreateUser}>
