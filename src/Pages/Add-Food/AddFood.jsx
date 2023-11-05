@@ -39,7 +39,7 @@ const AddFood = () => {
                 if (data.acknowledged) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Product Added Successfully',
+                        text: 'Food Added Successfully',
                         icon: 'Success',
                         confirmButtonText: 'Cool'
                     })
@@ -53,7 +53,7 @@ const AddFood = () => {
             </Helmet>
             <div className='bg-[#41647b] space-y-5 my-5 py-8 text-white'>
                 <div className=' space-y-5'>
-                    <h1 className='text-3xl text-center'>Add New Food</h1>
+                    <h1 className='text-3xl text-center'>🍕Add New Food!🍕</h1>
                 </div>
                 <div className='px-4 md:px-24'>
                     <form onSubmit={handleAddFood}>
@@ -64,7 +64,7 @@ const AddFood = () => {
                             </div>
                             <div className='flex-1'>
                                 <p className='text-xl'>Food Quantity</p>
-                                <input className="w-full p-2 text-black" type="text" name="foodQuantity" id="" placeholder='Enter food quantity' />
+                                <input className="w-full p-2 text-black" type="text" name="foodQuantity" id="" placeholder='Number of Person' />
                             </div>
                         </div>
                         <div className='flex flex-col md:flex-row gap-10 mb-5'>
