@@ -1,19 +1,25 @@
 
 import { Helmet } from "react-helmet-async";
 import ItemCard from "./ItemCard";
-import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './AvailableFood.css'
 
 
 const AvailableFood = () => {
-    let { count } = useLoaderData();
+    let [count,setCount] = useState(null);
     let [products, setProducts] = useState([]);
     let [itemPerPage, setItemPerPage] = useState(10)
     let [currentPage, setCurrentPage] = useState(0);
     let numberOfPages = Math.ceil(count / itemPerPage);
 
     let pages = [...Array(numberOfPages).keys()]
+    useEffect(()=>{
+        fetch('http://localhost:5000/available-food/productCount')
+        .then(res=>res.json())
+        .then(data=>{
+            setCount(data.count);
+        })
+    },[])
 
     useEffect(() => {
         fetch(`http://localhost:5000/available-food?foodStatus=available&page=${currentPage}&size=${itemPerPage}`)
@@ -50,7 +56,8 @@ const AvailableFood = () => {
             <Helmet>
                 <title>Meal Miracle | Available Food</title>
             </Helmet>
-            <div className="grid grid-cols-1 md:grid-cols-2 px-2 gap-5 mt-10 bg-[#41647b]">
+            <div className="text-center text-4xl font-bold my-5">All <span className="text-rose-800">Available</span> Food</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 px-2 gap-5 mt-5 bg-[#41647b]">
                 {
                     products?.map(item => <ItemCard
                         key={item._id}
