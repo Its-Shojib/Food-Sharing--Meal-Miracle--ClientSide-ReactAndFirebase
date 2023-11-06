@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const FoodItem = ({item}) => {
     let goto = useNavigate();
     let { _id, foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorName, donorImage } = item;
     return (
-        <div>
+        <div data-aos="flip-up">
             <div className="flex flex-col md:flex-row md:justify-start gap-5 bg-gray-300 my-5 p-2 rounded-md">
                 <figure className='flex-1'><img className='w-full h-52 md:h-full' src={foodImg} alt={foodName} /></figure>
                 <div className="flex-1 space-y-2">

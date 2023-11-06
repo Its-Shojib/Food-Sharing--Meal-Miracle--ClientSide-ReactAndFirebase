@@ -3,7 +3,10 @@ import { Helmet } from "react-helmet-async";
 import ItemCard from "./ItemCard";
 import { useEffect, useState } from "react";
 import './AvailableFood.css'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const AvailableFood = () => {
     let [count,setCount] = useState(null);
@@ -57,7 +60,7 @@ const AvailableFood = () => {
                 <title>Meal Miracle | Available Food</title>
             </Helmet>
             <div className="text-center text-4xl font-bold my-5">All <span className="text-rose-800">Available</span> Food</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 px-2 gap-5 mt-5 bg-[#41647b]">
+            <div className="grid grid-cols-1 md:grid-cols-2 px-2 md:px-5 gap-5 mt-5 bg-[#41647b]">
                 {
                     products?.map(item => <ItemCard
                         key={item._id}
