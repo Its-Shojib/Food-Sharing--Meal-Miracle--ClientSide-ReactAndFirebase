@@ -3,6 +3,7 @@ import Banner from "../../Components/Banner";
 import { useEffect, useState } from "react";
 import FoodItem from "./FoodItem";
 import { Link } from "react-router-dom";
+import CustomerReview from "../../Components/CustomerReview";
 
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
                 <title>Meal Miracle | Home</title>
             </Helmet>
             <Banner></Banner>
-            <h2 className="mt-10 mb-3 text-4xl font-bold text-center">Features <span className="text-rose-800">Food</span> Items</h2>
+            <h2 className="mt-10 mb-3 text-3xl md:text-5xl font-bold text-center">Features <span className="text-rose-800">Food</span> Items</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 px-2 gap-5 mt-10 bg-[#41647b]">
                 {
                     foods?.map(item=><FoodItem 
@@ -32,6 +33,7 @@ const Home = () => {
             <div className="my-5 block mx-auto">
                 <button className="bg-black px-5 py-2 rounded block mx-auto text-white"><Link to='/available-food'>Show All Food</Link></button>
             </div>
+            <CustomerReview></CustomerReview>
         </div>
     )
 }
