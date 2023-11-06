@@ -9,26 +9,21 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 AOS.init();
 
 const AvailableFood = () => {
-    let [count,setCount] = useState(null);
     let [products, setProducts] = useState([]);
-    let [itemPerPage, setItemPerPage] = useState(10)
-    let [currentPage, setCurrentPage] = useState(0);
-    let numberOfPages = Math.ceil(count / itemPerPage);
+    let [sortValue,setSortValue] = useState(1);
 
-    let pages = [...Array(numberOfPages).keys()]
-    useEffect(()=>{
-        fetch('http://localhost:5000/available-food/productCount')
-        .then(res=>res.json())
-        .then(data=>{
-            setCount(data.count);
-        })
-    },[])
+
+    // useEffect(()=>{
+    //     fetch(`http://localhost:5000/available-food/sort?foodStatus=available&sortOrder=${sortValue}`)
+    //     .then(res=>res.json())
+    //     .then(data=>setProducts(data))
+    // },[sortValue])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/available-food?foodStatus=available&page=${currentPage}&size=${itemPerPage}`)
+        fetch(`http://localhost:5000/available-food?foodStatus=available&sortOrder=${sortValue}`)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [currentPage, itemPerPage]);
+    }, [sortValue]);
     // const getAvailableFood = async () => {
     //     const res = await axios.get(`http://localhost:5000/available-food?foodStatus=available`)
     //     return res;
@@ -39,20 +34,15 @@ const AvailableFood = () => {
     // });
     // let availableFood = data?.data;
 
-    let handleItemPerPage = (e) =>{
+    let handleSearch = (e) =>{
+        e.preventDefault();
+        let input = e.target.name.value;
+        let filteredData = products.filter(data => data.foodName.toLowerCase().includes(input.toLowerCase()))
+        setProducts(filteredData);
+    }
+    let handleSort = (e) =>{
         let val = parseInt(e.target.value);
-        setItemPerPage(val);
-        setCurrentPage(0);
-    }
-    let handlePrevious = () =>{
-        if(currentPage > 0){
-            setCurrentPage(currentPage - 1);
-        }
-    }
-    let handleNext = () =>{
-        if(currentPage < pages.length - 1){
-            setCurrentPage(currentPage + 1);
-        }
+        setSortValue(val);
     }
     return (
         <div>
@@ -60,29 +50,27 @@ const AvailableFood = () => {
                 <title>Meal Miracle | Available Food</title>
             </Helmet>
             <div className="text-center text-4xl font-bold my-5">All <span className="text-rose-800">Available</span> Food</div>
+
+            <div className="flex justify-center items-center flex-col md:flex-row gap-5 md:gap-20 w-full mx-auto my-10">
+                <div className="space-y-5">
+                    <form onSubmit={handleSearch}>
+                        <input className="w-64 p-2 text-black border-solid border-2" type="text" name="name" placeholder="Search food name..." />
+                        <button className="bg-red-500 text-white px-3 py-2 rounded-r-md" type="submit">Search</button>
+                    </form>
+                </div>
+                <div className="text-lg">
+                    <span className="font-bold text-xl">Sort by:</span> <select onChange={handleSort}>
+                        <option value="1">Assending</option>
+                        <option value="-1">Decending</option>
+                    </select>
+                </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 px-2 md:px-5 gap-5 mt-5 bg-[#41647b]">
                 {
                     products?.map(item => <ItemCard
                         key={item._id}
                         item={item}></ItemCard>)
                 }
-            </div>
-            <div className='pagination my-5'>
-                <button onClick={handlePrevious}>Prev</button>
-                {
-                    pages.map(page => <button 
-                    className={currentPage === page ? 'selected':'undefined'} 
-                    key={page}
-                    onClick={()=> setCurrentPage(page)}
-                    >{page}</button>)
-                }
-                <button onClick={handleNext}>Next</button>
-                <select  defaultValue={itemPerPage} onChange={handleItemPerPage} name="" id="">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                </select>
             </div>
         </div>
     )

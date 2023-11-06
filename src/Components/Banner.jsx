@@ -2,7 +2,7 @@ import img from './../../src/assets/banner.jpg'
 
 const Banner = () => {
     return (
-        <div className='relative h-[510px]'>
+        <div className='relative h-[450px]'>
             <img className='w-full h-full' src={img} alt="" />
             <div className="absolute flex md:items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] left-0 top-0">
                         <div className="space-y-5 w-full md:w-8/12 px-5 md:pl-20 text-white">
