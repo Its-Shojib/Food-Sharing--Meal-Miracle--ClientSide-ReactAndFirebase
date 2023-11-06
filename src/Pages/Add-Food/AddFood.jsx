@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
     let {user} = useContext(AuthContext);
-    console.log(user);
     let handleAddFood = (e) => {
         e.preventDefault();
         let form = e.target;
