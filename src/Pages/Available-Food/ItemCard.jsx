@@ -14,10 +14,10 @@ const ItemCard = ({ item }) => {
                         <img className='w-20 rounded-full' src={donorImage} alt="" />
                         <h1 className='text-xl font-bold'>{donorName}</h1>
                     </div>
-                    <p>Quantity: {foodQuantity} person</p>
-                    <p>Expire in: {expDate} days</p>
-                    <p>Pickup Point: {pickupPoint}</p>
-                    <p>Details: {foodDesp}</p>
+                    <p className='text-lg font-medium'>Quantity: {foodQuantity} person</p>
+                    <p className='text-lg font-medium'>Expire in: {expDate} days</p>
+                    <p className='text-lg font-medium'>Pickup Point: {pickupPoint}</p>
+                    <p className='text-lg font-medium'>Details: {foodDesp}</p>
                     <button onClick={()=> goto(`/food/${_id}`) } className="bg-teal-700 px-4 py-2 rounded-md text-white">View Details</button>
                 </div>
             </div>
