@@ -1,60 +1,75 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup  } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import auth from "../Firebase/Firebase.config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     let [user, setUser] = useState(null);
-    let [loading,setLoading] = useState(true);
-    
+    let [loading, setLoading] = useState(true);
+
     let googleProvider = new GoogleAuthProvider();
 
 
-    let createUser = (email,password) =>{
+    let createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password);
+        return createUserWithEmailAndPassword(auth, email, password);
     }
-    let SignInUser = (email,password) =>{
+    let SignInUser = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
-    let Logout = ()=>{
+    let Logout = () => {
         setLoading(true);
         return signOut(auth);
     }
-    let googleSignIn = () =>{
+    let googleSignIn = () => {
         setLoading(true);
-        return signInWithPopup(auth,googleProvider);
+        return signInWithPopup(auth, googleProvider);
     }
 
-    useEffect(()=>{
-        let unSubscribe = onAuthStateChanged(auth,currentUser =>{
+    useEffect(() => {
+        let unSubscribe = onAuthStateChanged(auth, currentUser => {
             setLoading(false);
-            console.log('observing: ',currentUser)
+            console.log('observing: ', currentUser)
+            let userEmail = currentUser?.email || user?.email;
+            let loggedUser = { email: userEmail }
             setUser(currentUser);
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
+            else {
+                axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+                .then(res=>{
+                    console.log(res.data);
+                })
+            }
         })
-        return () =>{
+        return () => {
             unSubscribe();
-        } 
-    },[])
-
-
-        let authInfo = {
-            user,
-            createUser,
-            SignInUser,
-            Logout,
-            googleSignIn,
-            loading,
-            setUser
         }
+    }, [])
+
+
+    let authInfo = {
+        user,
+        createUser,
+        SignInUser,
+        Logout,
+        googleSignIn,
+        loading,
+        setUser
+    }
     return (
         <AuthContext.Provider value={authInfo}>
-                {children}
+            {children}
         </AuthContext.Provider>
     );
 

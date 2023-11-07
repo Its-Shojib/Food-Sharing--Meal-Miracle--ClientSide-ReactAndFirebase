@@ -52,17 +52,17 @@ const router = createBrowserRouter([
             {
                 path:'/food/:id',
                 element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-                loader:({params})=> fetch(`http://localhost:5000/food/${params.id}`)
+                loader:({params})=> fetch(`http://localhost:5000/food/${params.id}`,{credentials:'include'})
             },
             {
                 path:'/update/:id',
                 element: <PrivateRoutes><UpdateMyFood></UpdateMyFood></PrivateRoutes>,
-                loader:({params})=> fetch(`http://localhost:5000/update/${params.id}`)
+                loader:({params})=> fetch(`http://localhost:5000/update/${params.id}`,{credentials:"include"})
             },
             {
                 path:'/manage/:id',
                 element: <PrivateRoutes><ManageSingle></ManageSingle></PrivateRoutes>,
-                loader:({params})=> fetch(`http://localhost:5000/manage/${params.id}`)
+                loader:({params})=> fetch(`http://localhost:5000/manage/${params.id}`,{credentials:'include'})
             },
         ]
     },

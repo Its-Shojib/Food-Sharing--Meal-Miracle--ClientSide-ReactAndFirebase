@@ -13,7 +13,7 @@ const MyFoodReq = () => {
     let { user } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-requested-food?email=${user?.email}`)
+        fetch(`http://localhost:5000/my-requested-food?email=${user?.email}`,{credentials:'include'})
             .then(res => res.json())
             .then(data => {
                 console.log(data);

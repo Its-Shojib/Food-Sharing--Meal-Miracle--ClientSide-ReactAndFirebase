@@ -11,7 +11,7 @@ const Home = () => {
 
     let [foods,setFood] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000')
+        fetch('http://localhost:5000/home',{credentials: 'include'})
         .then(res=>res.json())
         .then(data=>setFood(data))
     },[])
