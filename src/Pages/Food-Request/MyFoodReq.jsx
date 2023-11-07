@@ -60,12 +60,11 @@ const MyFoodReq = () => {
             </Helmet>
             <h2 className="text-center font-bold mt-10 text-3xl md:text-4xl">My <span className="text-rose-800">Requested</span> Food</h2>
 
-
             <div className="overflow-x-auto mt-10">
-                <table className="table">
+                <table className="table bg-[#527790] text-white">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr  className="text-lg font-bold text-black">
                             <th>
                                 <label>
                                     Action

@@ -2,7 +2,6 @@
 import { Helmet } from "react-helmet-async";
 import ItemCard from "./ItemCard";
 import { useEffect, useState } from "react";
-import './AvailableFood.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
@@ -10,12 +9,12 @@ AOS.init();
 
 const AvailableFood = () => {
     let [products, setProducts] = useState([]);
-    let [sortValue,setSortValue] = useState(1);
-    let [myData,setMyData] = useState([]);
+    let [sortValue, setSortValue] = useState(1);
+    let [myData, setMyData] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         setMyData(products)
-    },[products])
+    }, [products])
 
     // useEffect(()=>{
     //     fetch(`http://localhost:5000/available-food/sort?foodStatus=available&sortOrder=${sortValue}`)
@@ -38,13 +37,13 @@ const AvailableFood = () => {
     // });
     // let availableFood = data?.data;
 
-    let handleSearch = (e) =>{
+    let handleSearch = (e) => {
         e.preventDefault();
         let input = e.target.name.value;
         let filteredData = products.filter(data => data.foodName.toLowerCase().includes(input.toLowerCase()))
         setMyData(filteredData);
     }
-    let handleSort = (e) =>{
+    let handleSort = (e) => {
         let val = parseInt(e.target.value);
         setSortValue(val);
     }
@@ -55,11 +54,11 @@ const AvailableFood = () => {
             </Helmet>
             <div className="text-center text-4xl font-bold my-5">All <span className="text-rose-800">Available</span> Food</div>
 
-            <div className="flex justify-center items-center flex-col md:flex-row gap-5 md:gap-20 w-full mx-auto my-10">
+            <div className="flex justify-center items-center flex-col md:flex-row gap-5 md:gap-20 w-full mx-auto my-5 bg-[#41647b] py-10 rounded-md">
                 <div className="space-y-5">
                     <form onSubmit={handleSearch}>
-                        <input className="w-64 p-2 text-black border-solid border-2" type="text" name="name" placeholder="Search food name..." />
-                        <button className="bg-red-500 text-white px-3 py-2 rounded-r-md" type="submit">Search</button>
+                        <input className="w-64 p-2 text-black rounded-l-md border-solid border-2" type="text" name="name" placeholder="Search food name..." />
+                        <button className="bg-red-500 text-white px-3 py-[10px] rounded-r-md" type="submit">Search</button>
                     </form>
                 </div>
                 <div className="text-lg">

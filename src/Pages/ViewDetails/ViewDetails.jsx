@@ -20,7 +20,7 @@ const ViewDetails = () => {
         let reqUserEmail = user?.email;
         let foodStatus = 'available';
 
-        let requestedUser = {id,donorName,foodName,foodQuantity,pickupPoint,expDate,foodImg,foodDesp,donorImage,donatePrice,requestedDate,requestedUserName,reqUserEmail,foodStatus};
+        let requestedUser = { id, donorName, foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorImage, donatePrice, requestedDate, requestedUserName, reqUserEmail, foodStatus };
 
         fetch('http://localhost:5000/requested-food', {
             method: 'POST',
@@ -57,75 +57,76 @@ const ViewDetails = () => {
                 </div>
                 <dialog id="modal" className="modal">
                     <div className="modal-box">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
                         <form onSubmit={handleRequest}>
                             <div className='flex flex-col md:flex-row gap-10 mb-5'>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Food Name</p>
-                                    <input  className="w-full p-2 text-black" type="text" defaultValue={foodName} readOnly />
+                                    <p className='text-xl font-bold'>Food Name</p>
+                                    <input className="w-full p-2 text-black" type="text" defaultValue={foodName} readOnly />
                                 </div>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Food Image</p>
+                                    <p className='text-xl font-bold'>Food Image</p>
                                     <input className="w-full p-2 text-black" type="text" defaultValue={foodImg} readOnly />
                                 </div>
                             </div>
                             <div className='flex flex-col md:flex-row gap-10 mb-5'>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Donor Name</p>
+                                    <p className='text-xl font-bold'>Donor Name</p>
                                     <input className="w-full p-2 text-black" type="text" defaultValue={donorName} readOnly />
                                 </div>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Donor Email</p>
-                                    <input className="w-full p-2 text-black" type="text" defaultValue={donorEmail} readOnly/>
+                                    <p className='text-xl font-bold'>Donor Email</p>
+                                    <input className="w-full p-2 text-black" type="text" defaultValue={donorEmail} readOnly />
                                 </div>
                             </div>
                             <div className='flex flex-col md:flex-row gap-10 mb-5'>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>User Name</p>
-                                    <input className="w-full p-2 text-black" type="text" defaultValue={user?.displayName} readOnly/>
+                                    <p className='text-xl font-bold'>User Name</p>
+                                    <input className="w-full p-2 text-black" type="text" defaultValue={user?.displayName} readOnly />
                                 </div>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>User Email</p>
+                                    <p className='text-xl font-bold'>User Email</p>
                                     <input className="w-full p-2 text-black" type="text" defaultValue={user?.email} readOnly />
                                 </div>
                             </div>
                             <div className='flex flex-col md:flex-row gap-10 mb-5'>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Pickup Point</p>
+                                    <p className='text-xl font-bold'>Pickup Point</p>
                                     <input className="w-full p-2 text-black" type="text" defaultValue={pickupPoint} readOnly />
                                 </div>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Food Id</p>
-                                    <input className="w-full p-2 text-black" type="text"  defaultValue={_id} readOnly />
+                                    <p className='text-xl font-bold'>Food Id</p>
+                                    <input className="w-full p-2 text-black" type="text" defaultValue={_id} readOnly />
                                 </div>
                             </div>
                             <div className='flex flex-col md:flex-row gap-10 mb-5'>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Requested Date</p>
-                                    <input className="w-full p-2 text-black" type="text" defaultValue={date} readOnly/>
+                                    <p className='text-xl font-bold'>Requested Date</p>
+                                    <input className="w-full p-2 text-black" type="text" defaultValue={date} readOnly />
                                 </div>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Expire Date</p>
-                                    <input className="w-full p-2 text-black" type="text" defaultValue={expDate} readOnly/>
+                                    <p className='text-xl font-bold'>Expire Date</p>
+                                    <input className="w-full p-2 text-black" type="text" defaultValue={expDate} readOnly />
                                 </div>
                             </div>
                             <div className='flex flex-col md:flex-row gap-10 mb-5'>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Donation Money</p>
+                                    <p className='text-xl font-bold'>Donation Money</p>
                                     <input className="w-full p-2 text-black" type="number" name="donationPrice" required placeholder='Enter the amount $' />
                                 </div>
                                 <div className='flex-1'>
-                                    <p className='text-xl'>Additional Notes</p>
+                                    <p className='text-xl font-bold'>Additional Notes</p>
                                     <input className="w-full p-2 text-black" type="text" name="addNotes" id="" defaultValue={foodDesp} />
                                 </div>
                             </div>
 
-                            <button className='w-full text-center text-white bg-[#0e0d0d] py-2 text-2xl mb-5' type="submit">Request Food</button>
+                            <button className='w-full text-center text-white bg-[#0e0d0d] py-2 text-2xl' type="submit">Request Food</button>
 
                         </form>
                     </div>
-                    <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
-                    </form>
                 </dialog>
             </div>
         </div>

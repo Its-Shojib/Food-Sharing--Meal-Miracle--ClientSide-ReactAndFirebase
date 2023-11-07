@@ -12,15 +12,15 @@ const RequestedRow = ({ reqFood, handleDelete }) => {
                     </button>
                 </label>
             </th>
-            <td>
+            <th>
                 {donorName}
-            </td>
+            </th>
             <td>
                 {pickupPoint}
             </td>
-            <td>{expDate}</td>
+            <td>{expDate} days</td>
             <td>{requestedDate}</td>
-            <td>{donatePrice}</td>
+            <td>{donatePrice} Tk.</td>
             <td>{foodStatus}</td>
 
             <th>
