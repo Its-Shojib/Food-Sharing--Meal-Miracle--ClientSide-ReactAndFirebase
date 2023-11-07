@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     let [showPassword, setShowPassword] = useState(false);
-    let { SignInUser, googleSignIn, githubSignIn } = useContext(AuthContext)
+    let { SignInUser, googleSignIn } = useContext(AuthContext)
     let navigate = useNavigate()
     let location = useLocation();
 
@@ -63,26 +63,6 @@ const Login = () => {
             })
 
     }
-    let handleGithubLogin = () => {
-        githubSignIn()
-            .then(result => {
-                console.log(result.user);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'User Login Successfully',
-                    icon: 'Success',
-                    confirmButtonText: 'Cool'
-                })
-                navigate(location.state ? location.state : '/');
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: `${error.message}`,
-                })
-            })
-    }
 
     return (
         <div className="flex flex-col md:flex-row-reverse justify-center items-center gap-5 px-4 mt-5">
@@ -124,7 +104,6 @@ const Login = () => {
                 <p className="mt-5">Or Sign up using</p>
                 <div className="flex gap-3 justify-center my-3">
                     <img onClick={handleGoogleLogin} className="w-8 cursor-pointer" src="/google.jpg" alt="" />
-                    <img onClick={handleGithubLogin} className="w-8 cursor-pointer" src="/GitHub-Mark.png" alt="" />
                 </div>
                 <div className="flex gap-3 justify-center mt-8">
                     <p>New to this site?</p>

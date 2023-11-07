@@ -1,13 +1,10 @@
 import { GrUpdate } from 'react-icons/gr';
 import PropTypes from 'prop-types';
 
-const ManageFoodTable = ({ item, myFood }) => {
+const ManageFoodTable = ({ item, myFood, handleDelete }) => {
     let { _id, foodImg, foodName,
         expDate,foodStatus} = item;
 
-    let handleDelete = (_id) => {
-        console.log(_id);
-    }
     let handleUpdate = (_id) =>{
         console.log(_id);
     }
@@ -36,5 +33,6 @@ const ManageFoodTable = ({ item, myFood }) => {
 ManageFoodTable.propTypes = {
     item: PropTypes.object,
     myFood: PropTypes.array,
+    handleDelete: PropTypes.func
 }
 export default ManageFoodTable;

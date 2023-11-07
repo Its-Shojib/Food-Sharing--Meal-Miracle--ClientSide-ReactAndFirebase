@@ -17,7 +17,7 @@ import { Helmet } from "react-helmet-async";
 const Register = () => {
 
     let [showPassword, setShowPassword] = useState(false);
-    let { createUser, googleSignIn, githubSignIn } = useContext(AuthContext)
+    let { createUser, googleSignIn } = useContext(AuthContext)
 
     let navigate = useNavigate()
     let handleCreateUser = (e) => {
@@ -100,27 +100,6 @@ const Register = () => {
             })
 
     }
-    let handleGithubLogin = () => {
-        githubSignIn()
-            .then(result => {
-                console.log(result.user);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'User Created Successfully',
-                    icon: 'Success',
-                    confirmButtonText: 'Cool'
-                })
-                navigate('/')
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: `${error.message}`,
-                })
-            })
-
-    }
     return (
         <div className="flex flex-col md:flex-row gap-5 px-2 justify-center items-center mt-5">
             <Helmet>
@@ -179,7 +158,6 @@ const Register = () => {
                 <p className="mt-3">Or Sign up using</p>
                 <div className="flex gap-3 justify-center my-3">
                     <img onClick={handleGoogleLogin} className="w-8 cursor-pointer" src="/google.jpg" alt="" />
-                    <img onClick={handleGithubLogin} className="w-8 cursor-pointer" src="/GitHub-Mark.png" alt="" />
                 </div>
                 <div className="flex gap-3 justify-center mt-3">
                     <p>Already have an account?</p>

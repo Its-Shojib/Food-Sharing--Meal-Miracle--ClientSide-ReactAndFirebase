@@ -22,12 +22,6 @@ const RequestedRow = ({ reqFood, handleDelete }) => {
             <td>{requestedDate}</td>
             <td>{donatePrice} Tk.</td>
             <td>{foodStatus}</td>
-
-            <th>
-                {/* {
-                status ==='confirm' ? <span className='font-bold text-red-600'>Confirmed</span> :<button onClick={()=>handleConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
-            } */}
-            </th>
         </tr>
     )
 }

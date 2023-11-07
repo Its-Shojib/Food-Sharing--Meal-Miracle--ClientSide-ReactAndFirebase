@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import ManageFoodTable from "./ManageFoodTable";
+import Swal from "sweetalert2";
 
 
 const ManageMyFood = () => {
@@ -18,6 +19,43 @@ const ManageMyFood = () => {
 
             })
     }, [user])
+
+    let handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/manage-my-food/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Food has been deleted.',
+                                'success'
+                            )
+                            let remaining = myFood.filter(food => food._id !== id);
+                            setMyFood(remaining)
+                        }
+                    })
+                fetch(`http://localhost:5000/request-delete/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+            }
+        })
+    }
 
     return (
         <div>
@@ -46,7 +84,8 @@ const ManageMyFood = () => {
                             myFood.map(item => <ManageFoodTable
                                 key={item._id}
                                 item={item}
-                                myFood = {myFood}
+                                myFood={myFood}
+                                handleDelete={handleDelete}
                             ></ManageFoodTable>)
                         }
                     </tbody>
