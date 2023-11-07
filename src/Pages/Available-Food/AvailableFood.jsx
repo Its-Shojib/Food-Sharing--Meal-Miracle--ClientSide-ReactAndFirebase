@@ -11,7 +11,11 @@ AOS.init();
 const AvailableFood = () => {
     let [products, setProducts] = useState([]);
     let [sortValue,setSortValue] = useState(1);
+    let [myData,setMyData] = useState([]);
 
+    useEffect(()=>{
+        setMyData(products)
+    },[products])
 
     // useEffect(()=>{
     //     fetch(`http://localhost:5000/available-food/sort?foodStatus=available&sortOrder=${sortValue}`)
@@ -38,7 +42,7 @@ const AvailableFood = () => {
         e.preventDefault();
         let input = e.target.name.value;
         let filteredData = products.filter(data => data.foodName.toLowerCase().includes(input.toLowerCase()))
-        setProducts(filteredData);
+        setMyData(filteredData);
     }
     let handleSort = (e) =>{
         let val = parseInt(e.target.value);
@@ -67,7 +71,7 @@ const AvailableFood = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 px-2 md:px-5 gap-5 mt-5 bg-[#41647b]">
                 {
-                    products?.map(item => <ItemCard
+                    myData?.map(item => <ItemCard
                         key={item._id}
                         item={item}></ItemCard>)
                 }
