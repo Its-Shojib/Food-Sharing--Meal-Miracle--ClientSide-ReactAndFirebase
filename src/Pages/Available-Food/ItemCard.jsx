@@ -5,7 +5,7 @@ const ItemCard = ({ item }) => {
     let goto = useNavigate();
     let { _id, foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorName, donorImage } = item;
     return (
-        <div data-aos="flip-up">
+        <div data-aos="zoom-in">
             <div className="flex flex-col md:flex-row md:justify-start gap-5 bg-gray-300 my-5 p-2 rounded-md">
                 <figure className='flex-1'><img className='w-full h-52 md:h-full' src={foodImg} alt={foodName} /></figure>
                 <div className="flex-1 space-y-2">

@@ -12,12 +12,14 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import auth from "../../Firebase/Firebase.config";
 import animation from './../../../src/assets/SignUpAnimation.json'
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Register = () => {
 
     let [showPassword, setShowPassword] = useState(false);
-    let { createUser, googleSignIn } = useContext(AuthContext)
+    let { createUser, googleSignIn } = useContext(AuthContext);
+    let {user,setUser} = useAuth()
 
     let navigate = useNavigate()
     let handleCreateUser = (e) => {
@@ -60,6 +62,7 @@ const Register = () => {
                     displayName: myname, photoURL: myphoto
                 })
                     .then(() => {
+                        setUser({...user, photoURL: myphoto,displayName:myname});
                         Swal.fire({
                             title: 'Success!',
                             text: 'User Created Successfully',

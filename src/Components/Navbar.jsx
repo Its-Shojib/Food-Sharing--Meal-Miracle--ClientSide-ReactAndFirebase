@@ -4,7 +4,7 @@ import { AuthContext } from './../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
-    let {user, Logout } = useContext(AuthContext)
+    let { user, Logout } = useContext(AuthContext)
 
     let links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -37,9 +37,23 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end text-white">
                     {
-                        user ? <button onClick={()=> Logout().then().catch(err=>{console.log(err);})} className="bg-red-600 px-4 py-2 rounded-md font-semibold">Log Out</button> : <button className=" bg-green-600 px-4 py-2 rounded-md font-semibold"><NavLink to='/login'>Login</NavLink></button>
+                        user && <>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-500 rounded-box w-28">
+                                    <li>{user.displayName}</li>
+                                </ul>
+                            </div>
+                        </>
                     }
-                    
+                    {
+                        user ? <button onClick={() => Logout().then().catch(err => { console.log(err); })} className="bg-red-600 px-4 py-2 rounded-md font-semibold">Log Out</button> : <button className=" bg-green-600 px-4 py-2 rounded-md font-semibold"><NavLink to='/login'>Login</NavLink></button>
+                    }
+
                 </div>
             </div>
         </div>

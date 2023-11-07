@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
     useEffect(()=>{
         let unSubscribe = onAuthStateChanged(auth,currentUser =>{
             setLoading(false);
-            console.log('observing: ',currentUser?.displayName)
+            console.log('observing: ',currentUser)
             setUser(currentUser);
         })
         return () =>{
@@ -49,7 +49,8 @@ const AuthProvider = ({ children }) => {
             SignInUser,
             Logout,
             googleSignIn,
-            loading
+            loading,
+            setUser
         }
     return (
         <AuthContext.Provider value={authInfo}>
