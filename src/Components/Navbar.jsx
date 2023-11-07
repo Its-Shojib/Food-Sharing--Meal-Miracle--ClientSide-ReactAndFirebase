@@ -26,7 +26,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex justify-center items-center gap-2">
-                        <Link><img className="w-16 h-16" src="./../../public/log.png" alt="" /></Link>
+                        <Link><img className="w-16 h-16" src="/log.png" alt="" /></Link>
                         <h2 className="text-white text-xl md:text-3xl font-bold">Meal Miracle</h2>
                     </div>
                 </div>
