@@ -42,27 +42,27 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes><MyFoodReq></MyFoodReq></PrivateRoutes>
             },
             {
-                path:'/login',
+                path: '/login',
                 element: <Login></Login>
             },
             {
-                path:'/register',
+                path: '/register',
                 element: <Register></Register>
             },
             {
-                path:'/food/:id',
+                path: '/food/:id',
                 element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-                loader:({params})=> fetch(`http://localhost:5000/food/${params.id}`,{credentials:'include'})
+                loader: ({ params }) => fetch(`https://food-sharing-server-ashy.vercel.app/food/${params.id}`, { credentials: 'include' })
             },
             {
-                path:'/update/:id',
+                path: '/update/:id',
                 element: <PrivateRoutes><UpdateMyFood></UpdateMyFood></PrivateRoutes>,
-                loader:({params})=> fetch(`http://localhost:5000/update/${params.id}`,{credentials:"include"})
+                loader: ({ params }) => fetch(`https://food-sharing-server-ashy.vercel.app/update/${params.id}`, { credentials: "include" })
             },
             {
-                path:'/manage/:id',
+                path: '/manage/:id',
                 element: <PrivateRoutes><ManageSingle></ManageSingle></PrivateRoutes>,
-                loader:({params})=> fetch(`http://localhost:5000/manage/${params.id}`,{credentials:'include'})
+                loader: ({ params }) => fetch(`https://food-sharing-server-ashy.vercel.app/manage/${params.id}`, { credentials: 'include' })
             },
         ]
     },

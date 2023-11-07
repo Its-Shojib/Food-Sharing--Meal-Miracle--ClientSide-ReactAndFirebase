@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ManageSingleRow = ({ item }) => {
-    let {id, requestedDate, requestedUserName, reqUserEmail, requestedUserImg, foodStatus } = item;
+    let { id, requestedDate, requestedUserName, reqUserEmail, requestedUserImg, foodStatus } = item;
 
     let navigate = useNavigate()
-    let handleConfirm =(id)=>{
-        let updateStatus = { foodStatus: 'Delivered'}
-        fetch(`http://localhost:5000/updateStatus/${id}`, {
+    let handleConfirm = (id) => {
+        let updateStatus = { foodStatus: 'Delivered' }
+        fetch(`https://food-sharing-server-ashy.vercel.app/updateStatus/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -27,7 +27,7 @@ const ManageSingleRow = ({ item }) => {
                     navigate('/manage-my-food')
                 }
             })
-        fetch(`http://localhost:5000/updateReqStatus/${id}`, {
+        fetch(`https://food-sharing-server-ashy.vercel.app/updateReqStatus/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ const ManageSingleRow = ({ item }) => {
             <th className="text-lg font-bold">{requestedUserName}</th>
             <th>{reqUserEmail}</th>
             <th>{requestedDate}</th>
-            <th><button onClick={()=>handleConfirm(id)} className="btn">{foodStatus}</button></th>
+            <th><button onClick={() => handleConfirm(id)} className="btn">{foodStatus}</button></th>
         </tr>
     )
 }

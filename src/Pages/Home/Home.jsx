@@ -9,12 +9,12 @@ import OurImpact from './../../Components/OurImpact';
 
 const Home = () => {
 
-    let [foods,setFood] = useState([]);
-    useEffect(()=>{
-        fetch('http://localhost:5000/home',{credentials: 'include'})
-        .then(res=>res.json())
-        .then(data=>setFood(data))
-    },[])
+    let [foods, setFood] = useState([]);
+    useEffect(() => {
+        fetch('https://food-sharing-server-ashy.vercel.app/home', { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => setFood(data))
+    }, [])
 
 
     return (
@@ -26,7 +26,7 @@ const Home = () => {
             <h2 className="mt-10 mb-3 text-3xl md:text-5xl font-bold text-center">Features <span className="text-rose-800">Food</span> Items</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 px-2 md:p-5 gap-10 mt-10 bg-[#41647b]">
                 {
-                    foods?.map(item=><FoodItem 
+                    foods?.map(item => <FoodItem
                         key={item._id}
                         item={item}></FoodItem>)
                 }

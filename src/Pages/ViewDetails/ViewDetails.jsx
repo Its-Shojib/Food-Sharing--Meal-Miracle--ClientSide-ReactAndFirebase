@@ -21,9 +21,9 @@ const ViewDetails = () => {
         let reqUserEmail = user?.email;
         let foodStatus = 'available';
 
-        let requestedUser = { id, donorName, foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorImage, donatePrice, requestedDate, requestedUserName, reqUserEmail,requestedUserImg, foodStatus };
+        let requestedUser = { id, donorName, foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorImage, donatePrice, requestedDate, requestedUserName, reqUserEmail, requestedUserImg, foodStatus };
 
-        fetch('http://localhost:5000/requested-food', {
+        fetch('https://food-sharing-server-ashy.vercel.app/requested-food', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

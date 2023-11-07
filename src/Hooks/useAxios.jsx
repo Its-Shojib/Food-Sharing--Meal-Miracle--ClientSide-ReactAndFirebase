@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://food-sharing-server-ashy.vercel.app',
     headers: { 'X-Custom-Header': 'foobar' },
-    withCredentials: true ,
+    withCredentials: true,
 });
 const useAxios = () => {
     return instance;

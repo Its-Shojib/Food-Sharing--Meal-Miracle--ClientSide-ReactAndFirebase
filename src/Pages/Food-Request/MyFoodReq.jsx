@@ -13,7 +13,7 @@ const MyFoodReq = () => {
     let { user } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-requested-food?email=${user?.email}`,{credentials:'include'})
+        fetch(`https://food-sharing-server-ashy.vercel.app/my-requested-food?email=${user?.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -35,7 +35,7 @@ const MyFoodReq = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/my-requested-food/${id}`, {
+                fetch(`https://food-sharing-server-ashy.vercel.app/my-requested-food/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -47,7 +47,7 @@ const MyFoodReq = () => {
                                 'success'
                             )
                             let remaining = requestedFood.filter(reqFood => reqFood._id !== id);
-                    setRequestedFood(remaining)
+                            setRequestedFood(remaining)
                         }
                     })
             }
@@ -64,7 +64,7 @@ const MyFoodReq = () => {
                 <table className="table bg-[#527790] text-white">
                     {/* head */}
                     <thead>
-                        <tr  className="text-lg font-bold text-black">
+                        <tr className="text-lg font-bold text-black">
                             <th>Donor Name</th>
                             <th>Pickup Point</th>
                             <th>Expire Date</th>

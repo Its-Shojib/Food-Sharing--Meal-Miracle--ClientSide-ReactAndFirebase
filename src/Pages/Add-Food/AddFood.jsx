@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 const AddFood = () => {
-    let {user} = useContext(AuthContext);
+    let { user } = useContext(AuthContext);
     let navigate = useNavigate();
 
     let handleAddFood = (e) => {
@@ -24,12 +24,12 @@ const AddFood = () => {
 
         let date1 = new Date();
         let date2 = new Date(inputDate)
-        let time = Math.abs(date2-date1);
-        let expDate = Math.ceil(time/(1000*60*60*24))
+        let time = Math.abs(date2 - date1);
+        let expDate = Math.ceil(time / (1000 * 60 * 60 * 24))
 
-        let newFood = { foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp,donorName,donorImage,donorEmail,foodStatus}
+        let newFood = { foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorName, donorImage, donorEmail, foodStatus }
         console.log(newFood)
-        fetch('http://localhost:5000/foods', {
+        fetch('https://food-sharing-server-ashy.vercel.app/foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

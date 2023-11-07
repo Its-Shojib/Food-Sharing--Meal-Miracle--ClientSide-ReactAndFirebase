@@ -7,7 +7,7 @@ const useReqFood = () => {
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['requestedFood'],
         queryFn: async () => {
-            const data = await fetch(`http://localhost:5000/my-requested-food?email=${user?.email}`);
+            const data = await fetch(`https://food-sharing-server-ashy.vercel.app/my-requested-food?email=${user?.email}`);
             return await data.json();
         },
     });

@@ -11,7 +11,7 @@ const ManageMyFood = () => {
     let [myFood, setMyFood] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myfood?email=${user?.email}`,{credentials:'include'})
+        fetch(`https://food-sharing-server-ashy.vercel.app/myfood?email=${user?.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -31,7 +31,7 @@ const ManageMyFood = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/manage-my-food/${id}`, {
+                fetch(`https://food-sharing-server-ashy.vercel.app/manage-my-food/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -46,7 +46,7 @@ const ManageMyFood = () => {
                             setMyFood(remaining)
                         }
                     })
-                fetch(`http://localhost:5000/request-delete/${id}`, {
+                fetch(`https://food-sharing-server-ashy.vercel.app/request-delete/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

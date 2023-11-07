@@ -17,18 +17,18 @@ const AvailableFood = () => {
     }, [products])
 
     // useEffect(()=>{
-    //     fetch(`http://localhost:5000/available-food/sort?foodStatus=available&sortOrder=${sortValue}`)
+    //     fetch(`https://food-sharing-server-ashy.vercel.app/available-food/sort?foodStatus=available&sortOrder=${sortValue}`)
     //     .then(res=>res.json())
     //     .then(data=>setProducts(data))
     // },[sortValue])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/available-food?foodStatus=available&sortOrder=${sortValue}`)
+        fetch(`https://food-sharing-server-ashy.vercel.app/available-food?foodStatus=available&sortOrder=${sortValue}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [sortValue]);
     // const getAvailableFood = async () => {
-    //     const res = await axios.get(`http://localhost:5000/available-food?foodStatus=available`)
+    //     const res = await axios.get(`https://food-sharing-server-ashy.vercel.app/available-food?foodStatus=available`)
     //     return res;
     // }
     // const { data } = useQuery({
