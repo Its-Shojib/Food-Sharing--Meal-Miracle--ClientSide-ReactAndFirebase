@@ -1,13 +1,13 @@
 import { GrUpdate } from 'react-icons/gr';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const ManageFoodTable = ({ item, myFood, handleDelete }) => {
     let { _id, foodImg, foodName,
         expDate,foodStatus} = item;
 
-    let handleUpdate = (_id) =>{
-        console.log(_id);
-    }
+    let goto = useNavigate()
+
     return (
         <tr>
             <th>
@@ -17,7 +17,7 @@ const ManageFoodTable = ({ item, myFood, handleDelete }) => {
             <th>{expDate} days</th>
             <th>{foodStatus}</th>
             <th>
-                <button className="btn btn-ghost" onClick={() => handleUpdate(_id)}>
+                <button className="btn btn-ghost" onClick={() => goto(`/update/${_id}`)}>
                     <GrUpdate  className='text-2xl'></GrUpdate>
                 </button>
             </th>

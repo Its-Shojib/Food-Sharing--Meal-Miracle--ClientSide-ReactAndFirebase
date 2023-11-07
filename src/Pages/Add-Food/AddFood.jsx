@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { AuthContext } from './../../AuthProvider/AuthProvider';
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 const AddFood = () => {
     let {user} = useContext(AuthContext);
+    let navigate = useNavigate();
+
     let handleAddFood = (e) => {
         e.preventDefault();
         let form = e.target;
@@ -42,6 +45,7 @@ const AddFood = () => {
                         icon: 'Success',
                         confirmButtonText: 'Cool'
                     })
+                    navigate('/')
                 }
             })
     }
