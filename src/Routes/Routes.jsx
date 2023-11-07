@@ -11,6 +11,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRoutes from "./PrivateRoutes";
 import ViewDetails from "../Pages/ViewDetails/ViewDetails";
 import UpdateMyFood from "../Pages/Update-Food/UpdateMyFood";
+import ManageSingle from "../Pages/Manage-Single/ManageSingle";
 
 
 const router = createBrowserRouter([
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
                 path:'/update/:id',
                 element: <PrivateRoutes><UpdateMyFood></UpdateMyFood></PrivateRoutes>,
                 loader:({params})=> fetch(`http://localhost:5000/update/${params.id}`)
+            },
+            {
+                path:'/manage/:id',
+                element: <PrivateRoutes><ManageSingle></ManageSingle></PrivateRoutes>,
+                loader:({params})=> fetch(`http://localhost:5000/manage/${params.id}`)
             },
         ]
     },

@@ -65,17 +65,13 @@ const MyFoodReq = () => {
                     {/* head */}
                     <thead>
                         <tr  className="text-lg font-bold text-black">
-                            <th>
-                                <label>
-                                    Action
-                                </label>
-                            </th>
                             <th>Donor Name</th>
                             <th>Pickup Point</th>
                             <th>Expire Date</th>
                             <th>Requested Date</th>
                             <th>Donation Amount</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
