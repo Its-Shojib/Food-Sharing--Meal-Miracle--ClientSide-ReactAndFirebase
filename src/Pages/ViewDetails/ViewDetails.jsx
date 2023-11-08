@@ -1,9 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from './../../Hooks/useAuth';
 import Swal from "sweetalert2";
 
 const ViewDetails = () => {
     let { user } = useAuth();
+    let goto = useNavigate();
     let currentDate = new Date();
     let date = currentDate.toISOString().split('T')[0];
     let item = useLoaderData();
@@ -40,6 +41,7 @@ const ViewDetails = () => {
                         confirmButtonText: 'Cool'
                     })
                 }
+                goto('/my-food-request')
             })
     }
 
