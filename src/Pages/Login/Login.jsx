@@ -32,7 +32,7 @@ const Login = () => {
                     icon: 'Success',
                     confirmButtonText: 'Cool'
                 })
-                navigate(location.state ? location.state : '/');
+                navigate('/');
             })
             .catch(error => {
                 Swal.fire({
