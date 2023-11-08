@@ -49,14 +49,14 @@ const ViewDetails = () => {
         <div>
             <div className="flex flex-col md:flex-row md:justify-start gap-5 bg-gray-300 my-5 rounded-md">
                 <figure className='flex-1'><img className='w-full h-52 md:h-full' src={foodImg} alt={foodName} /></figure>
-                <div className="flex-1 space-y-2">
+                <div className="flex-1 space-y-3 px-4">
                     <h2 className="card-title text-4xl my-3">Food Name: {foodName}</h2>
                     <h1 className='text-xl font-bold'>Donor Name: {donorName}</h1>
                     <p className="font-semibold text-lg">Quantity: {foodQuantity} person</p>
                     <p className="font-semibold text-lg">Expire in: {expDate} days</p>
                     <p className="font-semibold text-lg">Pickup Point: {pickupPoint}</p>
                     <p className="font-semibold text-lg">Details: {foodDesp}</p>
-                    <button onClick={() => document.getElementById('modal').showModal()} className="bg-teal-700 px-4 py-2 rounded-md text-white">Request Food</button>
+                    <button onClick={() => document.getElementById('modal').showModal()} className="bg-teal-700 px-4 py-2 rounded-md text-white block mx-auto ">Request Food</button>
                 </div>
                 <dialog id="modal" className="modal">
                     <div className="modal-box">

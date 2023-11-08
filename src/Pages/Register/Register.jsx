@@ -117,7 +117,7 @@ const Register = () => {
                         <input className="w-full p-2 pl-7 text-black rounded-lg my-1"
                             type="text"
                             name="name"
-                            placeholder="Type your name"
+                            placeholder="Type your name" required
                         />
                     </div>
                     <hr className="my-2" />
@@ -127,7 +127,7 @@ const Register = () => {
                         <input className="w-full p-2 pl-7 text-black rounded-lg my-1"
                             type="text"
                             name="image"
-                            placeholder="Paste Image Url"
+                            placeholder="Paste Image Url" required
                         />
                     </div>
                     <hr className="my-2" />
@@ -147,7 +147,7 @@ const Register = () => {
                         <input className="w-full p-2 pl-6 text-black rounded-lg my-1"
                             type={showPassword ? 'text' : 'password'}
                             name="password"
-                            placeholder="Type your password"
+                            placeholder="Type your password" required
                         />
                         <span onClick={() => setShowPassword(!showPassword)} className="absolute right-3 bottom-4">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
                     </div>

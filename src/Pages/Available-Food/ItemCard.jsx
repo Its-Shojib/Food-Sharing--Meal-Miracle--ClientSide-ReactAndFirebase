@@ -18,7 +18,7 @@ const ItemCard = ({ item }) => {
                     <p className='text-lg font-medium'>Expire in: {expDate} days</p>
                     <p className='text-lg font-medium'>Pickup Point: {pickupPoint}</p>
                     <p className='text-lg font-medium'>Details: {foodDesp}</p>
-                    <button onClick={()=> goto(`/food/${_id}`) } className="bg-teal-700 px-4 py-2 rounded-md text-white">View Details</button>
+                    <button onClick={()=> goto(`/food/${_id}`) } className="bg-teal-700 px-4 py-2 rounded-md text-white block mx-auto">View Details</button>
                 </div>
             </div>
         </div>
