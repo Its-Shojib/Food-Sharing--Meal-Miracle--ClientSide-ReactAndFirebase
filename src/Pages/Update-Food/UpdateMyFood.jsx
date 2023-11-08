@@ -24,6 +24,7 @@ const UpdateMyFood = () => {
         let date2 = new Date(inputDate)
         let time = Math.abs(date2 - date1);
         let expDate = Math.ceil(time / (1000 * 60 * 60 * 24))
+        foodQuantity = parseInt(foodQuantity);
 
         let updatedFood = { foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp }
         console.log(updatedFood)
