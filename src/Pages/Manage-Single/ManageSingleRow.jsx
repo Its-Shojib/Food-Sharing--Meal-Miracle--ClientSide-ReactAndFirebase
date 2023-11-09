@@ -45,7 +45,7 @@ const ManageSingleRow = ({ item }) => {
             <th className="text-lg font-bold">{requestedUserName}</th>
             <th>{reqUserEmail}</th>
             <th>{requestedDate}</th>
-            <th><button onClick={() => handleConfirm(id)} className="bg-green-600 px-4 py-2 text-white rounded-md font-bold">{foodStatus == 'available' ? 'Deliver This =>' : 'Delivered'}</button></th>
+            <th><button onClick={() => handleConfirm(id)} className="bg-green-600 px-4 py-2 text-white rounded-md font-bold">{foodStatus == 'available' ? 'Pending' : 'Delivered'}</button></th>
         </tr>
     )
 }
