@@ -11,8 +11,6 @@ const React_Table = ({ myFood, handleDelete }) => {
     const columnDef = [
         {
             accessorKey: "foodImg",
-            // eslint-disable-next-line react/prop-types
-            Cell: ({ cell }) => <img src={cell.row.original.foodImg} alt="" />,
             header: 'Food Image'
         },
         {
