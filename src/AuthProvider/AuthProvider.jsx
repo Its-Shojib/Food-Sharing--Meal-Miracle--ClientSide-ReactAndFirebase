@@ -35,20 +35,20 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         let unSubscribe = onAuthStateChanged(auth, currentUser => {
             setLoading(false);
-            console.log('observing: ', currentUser)
+            console.log('observing: ', currentUser?.displayName)
             let userEmail = currentUser?.email || user?.email;
             let loggedUser = { email: userEmail }
             setUser(currentUser);
             if (currentUser) {
                 axios.post('https://food-sharing-server-ashy.vercel.app/jwt', loggedUser, { withCredentials: true })
-                    .then(res => {
-                        console.log(res.data);
+                    .then(() => {
+                        
                     })
             }
             else {
                 axios.post('https://food-sharing-server-ashy.vercel.app/logout', loggedUser, { withCredentials: true })
-                    .then(res => {
-                        console.log(res.data);
+                    .then(() => {
+                        
                     })
             }
         })

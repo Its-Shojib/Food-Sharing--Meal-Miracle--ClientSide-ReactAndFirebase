@@ -27,10 +27,8 @@ const AddFood = () => {
         let time = Math.abs(date2 - date1);
         let expDate = Math.ceil(time / (1000 * 60 * 60 * 24));
         foodQuantity = parseInt(foodQuantity);
-        console.log(foodQuantity);
-
+        
         let newFood = { foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp, donorName, donorImage, donorEmail, foodStatus }
-        console.log(newFood)
         fetch('https://food-sharing-server-ashy.vercel.app/foods', {
             method: 'POST',
             headers: {

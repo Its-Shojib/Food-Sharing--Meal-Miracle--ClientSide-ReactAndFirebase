@@ -2,8 +2,9 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
-import ManageFoodTable from "./ManageFoodTable";
+// import ManageFoodTable from "./ManageFoodTable";
 import Swal from "sweetalert2";
+import React_Table from './../../Components/React_Table';
 
 
 const ManageMyFood = () => {
@@ -14,9 +15,7 @@ const ManageMyFood = () => {
         fetch(`https://food-sharing-server-ashy.vercel.app/myfood?email=${user?.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setMyFood(data)
-
             })
     }, [user])
 
@@ -50,9 +49,7 @@ const ManageMyFood = () => {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                    })
+                    .then(() => {})
             }
         })
     }
@@ -65,30 +62,8 @@ const ManageMyFood = () => {
 
             <h2 className="text-center font-bold mt-5 text-3xl md:text-4xl">My <span className="text-rose-800">Managed</span> Food</h2>
 
-            <div className="overflow-x-auto mt-5 min-h-[500px]">
-                <table className="table bg-[#527790] text-white">
-                    {/* head */}
-                    <thead>
-                        <tr className="text-lg font-bold text-black">
-                            <th><label>Food Image</label></th>
-                            <th>Food Name</th>
-                            <th>Expire Date</th>
-                            <th>Food Status</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                            <th>Manage Food</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            myFood.map(item => <ManageFoodTable
-                                key={item._id}
-                                item={item}
-                                handleDelete={handleDelete}
-                            ></ManageFoodTable>)
-                        }
-                    </tbody>
-                </table>
+            <div>
+                <React_Table myFood={myFood} handleDelete={handleDelete}></React_Table>
             </div>
         </div>
 

@@ -51,7 +51,7 @@ const Navbar = () => {
                         </>
                     }
                     {
-                        user ? <button onClick={() => Logout().then().catch(err => { console.log(err); })} className="bg-red-600 px-4 py-2 rounded-md font-semibold">Log Out</button> : <button className=" bg-green-600 px-4 py-2 rounded-md font-semibold"><NavLink to='/login'>Login</NavLink></button>
+                        user ? <button onClick={() => Logout().then().catch( ()=> {})} className="bg-red-600 px-4 py-2 rounded-md font-semibold">Log Out</button> : <button className=" bg-green-600 px-4 py-2 rounded-md font-semibold"><NavLink to='/login'>Login</NavLink></button>
                     }
 
                 </div>

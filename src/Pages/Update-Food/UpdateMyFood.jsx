@@ -27,7 +27,7 @@ const UpdateMyFood = () => {
         foodQuantity = parseInt(foodQuantity);
 
         let updatedFood = { foodName, foodQuantity, pickupPoint, expDate, foodImg, foodDesp }
-        console.log(updatedFood)
+
         fetch(`https://food-sharing-server-ashy.vercel.app/update-one/${_id}`, {
             method: 'PUT',
             headers: {
@@ -55,9 +55,7 @@ const UpdateMyFood = () => {
             body: JSON.stringify(updatedFood)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
+            .then(() => {})
     }
     return (
         <div>

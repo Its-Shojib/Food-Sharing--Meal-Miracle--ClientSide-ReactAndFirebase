@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
 const ManageSingleRow = ({ item }) => {
     let { id, requestedDate, requestedUserName, reqUserEmail, requestedUserImg, foodStatus } = item;
 
@@ -35,8 +34,7 @@ const ManageSingleRow = ({ item }) => {
             body: JSON.stringify(updateStatus)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(() => {
             })
     }
     return (
@@ -47,7 +45,7 @@ const ManageSingleRow = ({ item }) => {
             <th className="text-lg font-bold">{requestedUserName}</th>
             <th>{reqUserEmail}</th>
             <th>{requestedDate}</th>
-            <th><button onClick={() => handleConfirm(id)} className="btn">{foodStatus}</button></th>
+            <th><button onClick={() => handleConfirm(id)} className="bg-green-600 px-4 py-2 text-white rounded-md font-bold">{foodStatus == 'available' ? 'Deliver This =>' : 'Delivered'}</button></th>
         </tr>
     )
 }

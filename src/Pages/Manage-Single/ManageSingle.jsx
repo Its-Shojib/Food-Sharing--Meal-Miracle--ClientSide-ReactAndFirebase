@@ -4,7 +4,6 @@ import ManageSingleRow from "./ManageSingleRow";
 
 const ManageSingle = () => {
     let reqData = useLoaderData();
-    console.log(reqData);
     return (
         <div>
             <h2 className="text-center font-bold mt-5 text-3xl md:text-4xl"><span className="text-rose-800">Requested</span> User</h2>

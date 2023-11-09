@@ -16,12 +16,11 @@ const MyFoodReq = () => {
         fetch(`https://food-sharing-server-ashy.vercel.app/my-requested-food?email=${user?.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 setRequestedFood(data)
 
             })
     }, [user])
-    console.log(requestedFood);
 
     let handleDelete = (id) => {
 
