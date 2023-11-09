@@ -13,7 +13,7 @@ const ManageSingle = () => {
                     {/* head */}
                     <thead>
                         <tr className="text-lg font-bold text-black">
-                            <th>Requester</th>
+                            <th>Requester Photo</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Requested Date</th>
