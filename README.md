@@ -16,3 +16,7 @@
 * **Delivered a food:** You can Deliver food by clicking Deliver button in Manage my food route.
 * **Food Update:** You can Update your product by clicking update product. 
 * **Dynamic Login-Logout:** If you just view our website you will find only home and login pages... 
+
+# Technology Used:
+
+* **React Js , Node Js, MongoDB, Express Js, Firebase, JSON Web Token, Tailwind**
