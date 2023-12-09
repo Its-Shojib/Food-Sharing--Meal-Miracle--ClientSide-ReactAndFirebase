@@ -1,6 +1,5 @@
 # [Meal Miracle](https://food-sharing-system.web.app/)
 
-
 # Live Link: 
    **https://food-sharing-system.web.app**
 # The Features are:
