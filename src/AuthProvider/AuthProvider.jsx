@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
             else {
                 axios.post('https://food-sharing-server-ashy.vercel.app/logout', loggedUser, { withCredentials: true })
                     .then(() => {
-                        console.log("Jwt Authentication Hitted!");  
+                        console.log("Jwt Authentication Hitted!")  
                     })
             }
         })
