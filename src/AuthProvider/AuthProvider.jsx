@@ -49,6 +49,9 @@ const AuthProvider = ({ children }) => {
                     .then(() => {
                         console.log("Jwt Authentication Hitted!")  
                     })
+                    .catch(err=>{
+                        console.log(err);
+                    })
             }
         })
         return () => {
