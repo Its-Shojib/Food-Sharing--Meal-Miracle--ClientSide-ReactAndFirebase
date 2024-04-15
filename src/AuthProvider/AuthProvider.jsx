@@ -53,11 +53,11 @@ const AuthProvider = ({ children }) => {
                         console.log(err);
                     })
             }
-        })
+        });
         return () => {
             unSubscribe();
         }
-    }, [user])
+    }, [user]);
 
 
     let authInfo = {
