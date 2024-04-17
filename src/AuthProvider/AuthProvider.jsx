@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 axios.post('https://food-sharing-server-ashy.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(() => {
-                        
+                        console.log('JWT logged');
                     })
             }
             else {
