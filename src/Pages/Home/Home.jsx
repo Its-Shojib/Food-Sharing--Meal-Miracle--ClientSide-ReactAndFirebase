@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import CustomerReview from "../../Components/CustomerReview";
 import OurImpact from './../../Components/OurImpact';
 
-
 const Home = () => {
 
     let [foods, setFood] = useState([]);
