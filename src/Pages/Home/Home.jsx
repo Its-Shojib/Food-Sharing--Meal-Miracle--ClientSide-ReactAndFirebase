@@ -14,8 +14,6 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setFood(data))
     }, [])
-
-
     return (
         <div>
             <Helmet>
