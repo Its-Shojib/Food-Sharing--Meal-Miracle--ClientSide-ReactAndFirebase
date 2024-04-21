@@ -13,7 +13,9 @@ const Home = () => {
         fetch('https://food-sharing-server-ashy.vercel.app/home', { credentials: 'include' })
             .then(res => res.json())
             .then(data => setFood(data))
-    }, [])
+    }, []);
+
+    
     return (
         <div>
             <Helmet>

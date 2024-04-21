@@ -8,10 +8,7 @@ import member2 from '../assets/Customer/member2.png'
 import member3 from '../assets/Customer/member3.png'
 import member4 from '../assets/Customer/member4.png'
 
-
-// import required modules
 import { Pagination, Autoplay, FreeMode, Scrollbar } from 'swiper/modules';
-
 
 const CustomerReview = () => {
     return (

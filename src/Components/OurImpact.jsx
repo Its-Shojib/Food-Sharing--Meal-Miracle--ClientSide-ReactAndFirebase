@@ -7,8 +7,7 @@ import school from '../assets/Impact/school.jpg'
 import waste from '../assets/Impact/waste.png'
 
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ..
+import 'aos/dist/aos.css'; 
 AOS.init();
 
 const OurImpact = () => {
