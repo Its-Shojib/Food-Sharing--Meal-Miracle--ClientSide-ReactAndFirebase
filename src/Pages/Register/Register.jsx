@@ -19,7 +19,7 @@ const Register = () => {
 
     let [showPassword, setShowPassword] = useState(false);
     let { createUser, googleSignIn } = useContext(AuthContext);
-    let {user,setUser} = useAuth()
+    let { user, setUser } = useAuth()
 
     let navigate = useNavigate()
     let handleCreateUser = (e) => {
@@ -62,7 +62,7 @@ const Register = () => {
                     displayName: myname, photoURL: myphoto
                 })
                     .then(() => {
-                        setUser({...user, photoURL: myphoto,displayName:myname});
+                        setUser({ ...user, photoURL: myphoto, displayName: myname });
                         Swal.fire({
                             title: 'Success!',
                             text: 'User Created Successfully',
@@ -101,7 +101,6 @@ const Register = () => {
                     text: `${error.message}`,
                 })
             })
-
     }
     return (
         <div className="flex flex-col md:flex-row gap-5 px-2 justify-center items-center mt-5">
