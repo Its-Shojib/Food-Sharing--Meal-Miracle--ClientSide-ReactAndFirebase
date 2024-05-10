@@ -60,7 +60,6 @@ const Login = () => {
                     text: `${error.message}`,
                 })
             })
-
     }
 
     return (
